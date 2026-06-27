@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Layers, Activity, Clock, ShieldAlert, CheckCircle2 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import TickerTape from '../components/TickerTape';
+
+// Use your live Render backend URL here
+const API_BASE_URL = 'https://prob-lab.onrender.com';
+
 export default function Dashboard() {
   const [stats, setStats] = useState({
     total_simulations: 0,
@@ -18,15 +22,22 @@ export default function Dashboard() {
       if (!token) return navigate('/login');
 
       try {
-        const response = await fetch('http://localhost:5000/api/dashboard/stats', {
-          headers: { 'Authorization': `Bearer ${token}` }
+        // Updated fetch to use the API_BASE_URL
+        const response = await fetch(`${API_BASE_URL}/api/dashboard/stats`, {
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
         });
+        
         if (response.ok) {
           const data = await response.json();
           setStats(data);
+        } else {
+          console.error("Server responded with error:", response.status);
         }
       } catch (err) {
-        console.error("Failed fetching dashboard metrics");
+        console.error("Failed fetching dashboard metrics:", err);
       } finally {
         setLoading(false);
       }
@@ -35,7 +46,6 @@ export default function Dashboard() {
     fetchDashboardData();
   }, [navigate]);
 
-  // Date formatter for the ledger
   const formatDate = (dateString) => {
     const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -59,9 +69,7 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Top Section: The Two Main Stat Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          
           <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl flex items-center gap-5">
             <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-indigo-400">
               <Layers className="w-8 h-8" />
@@ -85,10 +93,8 @@ export default function Dashboard() {
               </h3>
             </div>
           </div>
-
         </div>
 
-        {/* Bottom Section: Execution Audit Ledger */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-6 border-b border-slate-800 flex items-center gap-3">
             <Clock className="w-5 h-5 text-slate-400" />
@@ -152,7 +158,6 @@ export default function Dashboard() {
             </table>
           </div>
         </div>
-
       </main>
     </div>
   );

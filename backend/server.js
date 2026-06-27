@@ -30,7 +30,9 @@ app.use((req, res, next) => {
   next();
 });
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://prob-lab-1.onrender.com' 
+}));
 app.use(express.json());
 // Database Connection Setup (Hybrid: Local + Cloud)
 let pool;
