@@ -30,7 +30,7 @@ export default function PortfolioSimulator() {
     if (!token) return navigate('/login');
 
     try {
-      const response = await fetch('http://localhost:5000/api/simulations/portfolio', {
+      const response = await fetch('https://prob-lab.onrender.com/api/simulations/portfolio', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ 

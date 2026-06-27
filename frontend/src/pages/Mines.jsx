@@ -30,7 +30,7 @@ export default function Mines() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/simulations/mines', {
+      const response = await fetch('https://prob-lab.onrender.com/api/simulations/mines', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ 

@@ -26,7 +26,7 @@ export default function Roulette() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/simulations/roulette', {
+      const response = await fetch('https://prob-lab.onrender.com/api/simulations/roulette', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

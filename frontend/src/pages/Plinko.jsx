@@ -23,7 +23,7 @@ export default function Plinko() {
     if (!token) return navigate('/login');
 
     try {
-      const response = await fetch('http://localhost:5000/api/simulations/plinko', {
+      const response = await fetch('https://prob-lab.onrender.com/api/simulations/plinko', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ starting_bankroll: Number(bankroll), bet_amount: Number(betAmount), total_balls: Number(balls) }),

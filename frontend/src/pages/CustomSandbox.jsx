@@ -29,7 +29,7 @@ export default function CustomSandbox() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/simulations/custom', {
+      const response = await fetch('https://prob-lab.onrender.com/api/simulations/custom', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
