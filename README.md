@@ -76,43 +76,43 @@ To run the Quantitative Engine locally on your workstation, follow these steps:
 * PostgreSQL installed and running locally
 
 ### 1. Clone the Repository
-\`\`\`bash
+```bash
 git clone https://github.com/YOUR_USERNAME/probability-lab.git
 cd probability-lab
-\`\`\`
+```
 
 ### 2. Configure the Backend
 Navigate to the server directory and install dependencies:
-\`\`\`bash
+```bash
 cd backend
 npm install
-\`\`\`
+```
 
 Create a `.env` file in the `backend` directory:
-\`\`\`env
+```env
 DATABASE_URL=postgresql://postgres:your_password@localhost:5432/probability_lab
 JWT_SECRET=your_development_secret_key
 PORT=5000
-\`\`\`
+```
 
 Initialize your PostgreSQL database by running the schema commands found in `backend/schema.sql` (or create the tables manually based on the project requirements).
 
 Start the backend server:
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 ### 3. Configure the Frontend
 Open a new terminal window and navigate to the frontend directory:
-\`\`\`bash
+```bash
 cd frontend
 npm install
-\`\`\`
+```
 
 Start the development server:
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 The application will now be available at `http://localhost:5173` (or the port specified by Vite).
 
 ---
@@ -121,12 +121,14 @@ The application will now be available at `http://localhost:5173` (or the port sp
 
 ### The Analytical Command Center
 Aggregates lifetime processing nodes and displays the live global execution feed.
-> *[Insert Screenshot of the Dashboard with the Ticker Tape here]*
+<img width="1442" height="750" alt="Screenshot 2026-06-28 at 1 15 04 AM" src="https://github.com/user-attachments/assets/09b65e8f-51af-4627-a46b-660c9030ebf9" />
+
 
 ### Monte Carlo Portfolio Variance
 Maps structural variance across decades of simulated market returns.
-> *[Insert Screenshot of the Portfolio Simulator chart here]*
+<img width="1453" height="748" alt="Screenshot 2026-06-28 at 1 19 32 AM" src="https://github.com/user-attachments/assets/8900c6cd-a29f-4faf-bb2b-bd8a0ba7f886" />
+
 
 ### Absorbing Markov Chains
 Proves the mathematical certainty of capital exhaustion against infinite bankrolls.
-> *[Insert Screenshot of the Gambler's Ruin chart here]*
+<img width="1457" height="745" alt="Screenshot 2026-06-28 at 1 20 56 AM" src="https://github.com/user-attachments/assets/782ccf7c-3232-4d32-9fd7-66471a6111b7" />
